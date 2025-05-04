@@ -253,7 +253,7 @@ def discover_clusters_from_gnn(embeddings_np, n_clusters=5, method='kmeans'):
     
     return clusters
 
-def visualize_clusters_with_convex_hull(df, clusters, title="3D Drill Holes Clusters (Plotly)", ignore_ids=None):
+def visualise_clusters_with_convex_hull(df, clusters, title="3D Drill Holes Clusters (Plotly)", ignore_ids=None):
 
     import plotly.express as px
     import plotly.graph_objects as go
@@ -406,11 +406,11 @@ def main():
     # --- Clustering ---
     gnn_clusters = discover_clusters_from_gnn(embeddings_np, n_clusters=n_clusters)
     
-    # Prepare a DataFrame for visualization (using only the nodes used in graph construction)
+    # Prepare a DataFrame for visualisation (using only the nodes used in graph construction)
     df_clustered = df.iloc[:data.num_nodes].copy()
     
-    # --- Initial Visualization with no exclusions ---
-    fig = visualize_clusters_with_convex_hull(df_clustered, clusters=gnn_clusters,
+    # --- Initial Visualisation with no exclusions ---
+    fig = visualise_clusters_with_convex_hull(df_clustered, clusters=gnn_clusters,
                                               title="3D Visualisation of Drill Holes Clusters")
     if fig is not None:
         fig.show()
@@ -423,8 +423,8 @@ def main():
         except ValueError:
             print("Invalid input. No samples will be ignored.")
             ignore_ids = []
-        # Re-run visualization to update the convex hulls
-        fig = visualize_clusters_with_convex_hull(df_clustered, clusters=gnn_clusters,
+        # Re-run visualisation to update the convex hulls
+        fig = visualise_clusters_with_convex_hull(df_clustered, clusters=gnn_clusters,
                                                   title="3D Visualisation of Drill Holes Clusters (Filtered)",
                                                   ignore_ids=ignore_ids)
         if fig is not None:
